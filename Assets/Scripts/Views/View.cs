@@ -1,14 +1,11 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 
 namespace Views
 {
     public abstract class View : MonoBehaviour
     {
         [SerializeField] private ViewComponent[] viewComponents;
-        private readonly UnityEvent onOpen = new();
-        private readonly UnityEvent onClose = new();
+
 
         public virtual void Initialize()
         {
@@ -17,26 +14,26 @@ namespace Views
 
             foreach (ViewComponent viewComponent in viewComponents)
             {
-                viewComponent.Initialize(onOpen, onClose);
+                viewComponent.Initialize();
             }
         }
 
         public virtual void Show()
         {
             gameObject.SetActive(true);
-            onOpen?.Invoke();
+            foreach (ViewComponent viewComponent in viewComponents)
+            {
+                viewComponent.Show();
+            }
         }
 
         public virtual void Hide()
         {
             gameObject.SetActive(false);
-            onClose?.Invoke();
-        }
-
-        private void OnDestroy()
-        {
-            onOpen.RemoveAllListeners();
-            onClose.RemoveAllListeners();
+            foreach (ViewComponent viewComponent in viewComponents)
+            {
+                viewComponent.Hide();
+            }
         }
     }
 }

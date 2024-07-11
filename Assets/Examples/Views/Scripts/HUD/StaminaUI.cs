@@ -7,12 +7,15 @@ namespace Examples.Views.Scripts.HUD
     public class StaminaUI : ViewComponent
     {
         [SerializeField] private TMP_Text staminaText;
-        protected override void Show()
+        
+        public override void Initialize() { }
+
+        public override void Show()
         {
             staminaText.text = $"Stamina:{Random.Range(0, 101)}";
         }
 
-        protected override void Hide()
+        public override void Hide()
         {
             staminaText.text = string.Empty;
         }
