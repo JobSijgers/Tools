@@ -8,8 +8,6 @@ namespace Examples.Views.Scripts.HUD
     {
         [SerializeField] private TMP_Text healthText;
 
-        public override void Initialize() { }
-
         public override void Show()
         {
             healthText.text = $"Health:{Random.Range(0, 101)}";

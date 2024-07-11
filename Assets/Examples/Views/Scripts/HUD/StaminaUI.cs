@@ -7,8 +7,6 @@ namespace Examples.Views.Scripts.HUD
     public class StaminaUI : ViewComponent
     {
         [SerializeField] private TMP_Text staminaText;
-        
-        public override void Initialize() { }
 
         public override void Show()
         {

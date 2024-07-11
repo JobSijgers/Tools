@@ -21,7 +21,7 @@ namespace Examples.Views.Scripts.Pause
         
         private void OnResumeButtonClicked()
         {
-            ViewManager.ShowLastView();
+            ViewManager.instance.ShowLastView();
         }
     }
 }

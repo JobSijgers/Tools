@@ -6,7 +6,6 @@ namespace Views
     {
         [SerializeField] private ViewComponent[] viewComponents;
 
-
         public virtual void Initialize()
         {
             if (viewComponents == null || viewComponents.Length == 0)
@@ -21,15 +20,25 @@ namespace Views
         public virtual void Show()
         {
             gameObject.SetActive(true);
+            ShowViewComponents();
+        }
+
+        public virtual void Hide()
+        {
+            gameObject.SetActive(false);
+            HideViewComponents();
+        }
+
+        private void ShowViewComponents()
+        {
             foreach (ViewComponent viewComponent in viewComponents)
             {
                 viewComponent.Show();
             }
         }
 
-        public virtual void Hide()
+        private void HideViewComponents()
         {
-            gameObject.SetActive(false);
             foreach (ViewComponent viewComponent in viewComponents)
             {
                 viewComponent.Hide();

@@ -22,7 +22,7 @@ namespace Examples.Views.Scripts.HUD
         
         private void OnResumeButtonClicked()
         {
-            ViewManager.ShowView<PauseView>();
+            ViewManager.instance.ShowView<PauseView>();
         }
     }
 }

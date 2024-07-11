@@ -33,44 +33,43 @@ namespace Views
             ShowView(startingView);
         }
 
-        public static void ShowView<T>(bool saveInHistory = true)
+        public void ShowView<T>(bool saveInHistory = true)
         {
-            foreach (View view in instance.allViews)
+            foreach (View view in allViews)
             {
                 if (view is not T)
                     continue;
-                if (instance.activeView != null)
+                if (activeView != null)
                 {
                     if (saveInHistory)
                     {
-                        instance.viewHistory.Push(instance.activeView);
+                        instance.viewHistory.Push(activeView);
                     }
-
-                    instance.activeView.Hide();
+                    activeView.Hide();
                 }
 
                 view.Show();
-                instance.activeView = view;
+                activeView = view;
             }
         }
 
-        public static void ShowView(View view, bool saveInHistory = true)
+        public void ShowView(View view, bool saveInHistory = true)
         {
-            if (instance.activeView != null)
+            if (activeView != null)
             {
                 if (saveInHistory)
                 {
-                    instance.viewHistory.Push(instance.activeView);
+                    viewHistory.Push(instance.activeView);
                 }
 
-                instance.activeView.Hide();
+                activeView.Hide();
             }
 
             view.Show();
-            instance.activeView = view;
+            activeView = view;
         }
 
-        public static void ShowLastView()
+        public void ShowLastView()
         {
             if (instance.viewHistory.Count <= 0)
                 return;
